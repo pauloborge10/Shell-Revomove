@@ -1,0 +1,44 @@
+#!/bin/bash
+
+function to_execute() {
+
+	#Number of arguments on the command line.
+	C_ARGS="$#"
+
+	#Requirement of 2 arguments on the command line. Placeholders:
+	#P1: Path (ex: ~/Documents);
+	#P2: Number of files allowed in the folder.
+	if [[ $C_ARGS -eq 2 ]]; then
+		DIR="$1"
+		LIMIT_FILES="$2"
+		C_FILES=0
+
+		echo "$(date +"%D %T") The analysis was started!"
+
+		#Loop to return the file list.
+		for FILE in $(ls -t $DIR/*); do
+			#Increment for each existant file.
+			if [[ -f $FILE ]]; then
+				((C_FILES++))
+				if [[ $C_FILES -gt $LIMIT_FILES ]]; then
+
+					#echo $FILE
+
+					#<----- I can put any command here! ----->
+					#mv -v ${FILE} "${DIR}/out/"
+					rm -v ${FILE}
+
+				fi
+			fi
+		done
+
+		if [[ $C_FILES -le $LIMIT_FILES ]]; then
+			echo '*'
+		fi
+		echo "$(date +"%D %T") The analysis is complete!"
+
+	else
+		echo "$(date +"%D %T") Insufficient number of arguments."
+	fi
+
+}
