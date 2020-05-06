@@ -22,11 +22,11 @@ function to_execute() {
 				((C_FILES++))
 				if [[ $C_FILES -gt $LIMIT_FILES ]]; then
 
-					#echo $FILE
+					echo $FILE
 
 					#<----- I can put any command here! ----->
 					#mv -v ${FILE} "${DIR}/out/"
-					rm -v ${FILE}
+					#rm -v ${FILE}
 
 				fi
 			fi
