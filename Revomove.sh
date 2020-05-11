@@ -1,5 +1,5 @@
 #!/bin/bash
-. ./bin/ls-andact.lib
+. ./bin/andlogic.lib
 
 #Path containing the files.
 DIR="/home/${USER}/Documents/test"
